@@ -1,0 +1,400 @@
+
+@font-face {
+    font-family: "Inter";
+    src: 
+        url('public/fonts/Inter-VariableFont_opsz,wght.ttf') format("truetype"),
+        url('public/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format("truetype");
+}
+
+html,
+body {
+    background-color: transparent;
+    font-family: 'Inter';
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* SECTION: LANDING PAGE */
+
+.main-app {
+    display: flex;
+    flex-direction: column;
+}
+
+#sase-social-btn {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    bottom: 0;
+}
+
+section {
+  position: relative;
+  height: 100vh;            
+  overflow: hidden; 
+}
+
+
+#landing-vid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        
+  z-index: 0;              
+}
+
+#landing-page-inner {
+  position: relative;       
+  z-index: 1;              
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0); 
+  opacity: 0;
+  transition: background-color 2.5s, opacity 2.5s;
+}
+
+#landing-page-inner.revealed {
+  background-color: rgba(0,0,0,0.75);
+  opacity: 1;
+}
+
+
+#landing-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#sase-social-btn:hover,
+.dot:hover,
+.oval-cntr:hover,
+.second-oval-cntr:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#sase-social-btn:active,
+.dot:active,
+.oval-cntr:active,
+.second-oval-cntr:active {
+    transform: scale(0.95);
+}
+
+.sase-info-btn,
+.meet-board-btn {
+    padding: 15px 60px;
+    font-size: 22px;
+    border-radius: 5px;
+    font-family: 'Inter';
+    color: #000000;
+}
+
+.sase-info-btn:hover,
+.meet-board-btn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.sase-info-btn:active,
+.meet-board-btn:active {
+    transform: scale(0.95);
+}
+
+.sase-info-btn {
+    background-color: #e0ac1ddf;
+    border: solid 2px #e0ac1ddf;
+}
+
+.sase-info-btn:hover {
+    background-color: #e0ac1d5f;
+    color: #d9d9d9;
+}
+
+.meet-board-btn:hover {
+    background-color: #5d480f75;
+    color: #d9d9d9;
+}
+
+.meet-board-btn {
+    background-color: #5D480F;
+    border: solid 2px #5D480F;
+}
+
+.landing-btns {
+    display: flex;
+    column-gap: 10vw;
+}
+
+#landing-img {
+    pointer-events: none;
+    user-select: none;
+}
+
+.hidden-element {
+    position: relative;
+    background-color: rgba(0,0,0,0);
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 2.5s ease-out, opacity 2.5s ease-in; /* Adjust duration and easing */
+}
+
+.revealed {
+    background-color: rgba(0,0,0,0.5);
+    height: auto; 
+    opacity: 1;
+}
+
+.dot {
+  height: 40px;
+  width: 40px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.discord {
+    position: fixed;
+    background-color: #3C6AB3;
+    left: 130px;
+    top: 50px;
+}
+
+.instagram {
+    position: fixed;
+    background-color: #DB15A9;
+    left: 95px;
+    top: 100px;
+}
+
+.youtube {
+    position: fixed;
+    background-color: #FF2428;
+    left: 40px;
+    top: 130px;
+}
+
+.bi-discord,
+.bi-instagram,
+.bi-youtube {
+    position: absolute;
+    left: 7.5px;
+    top: 7.5px;
+}
+
+/* SECTION: SASE INFO */
+
+#sase-info {
+    background-color: #E0AD1D;
+    color: #5D480F;
+}
+
+#sase-info-header {
+    margin: 5vh;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#ul-stroke {
+    position: absolute;
+    left: 6vw;
+    top: 20vh;
+}
+
+.oval-cntr {
+  position: absolute;
+  right: 5vw;
+  width: 50vw;
+  height: 35vh;
+  border-radius: 50%;
+  background: rgba(93,72,15,0.25);
+  border: 5px solid #000;
+  overflow: hidden;                   /* clip off anything outside the oval */
+  display: flex;                      /* flex center the text block */
+  align-items: center;                
+  justify-content: center;
+  padding: 4rem;                      /* give some breathing room */
+  box-sizing: border-box;
+}
+
+.second-oval-cntr {
+  position: absolute;
+  left: 5vw;
+  top: 30vw;
+  width: 50vw;
+  height: 35vh;
+  border-radius: 50%;
+  background: rgba(93,72,15,0.25);
+  border: 5px solid #000;
+  overflow: hidden;                   /* clip off anything outside the oval */
+  display: flex;                      /* flex center the text block */
+  align-items: center;                
+  justify-content: center;
+  padding: 4rem;                      /* give some breathing room */
+  box-sizing: border-box;
+}
+
+.oval-cntr-txt {
+  text-align: center;
+  color: black;
+  font-size: 1.25em;
+  /* force long words to break so they stay inside: */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+#pol-1 {
+    position: absolute;
+    right: 2vw;
+    top: 50vh;
+}
+
+#pol-2 {
+    position: absolute;
+    left: 2vw;
+    top: 25vh;
+}
+
+#hand-lb {
+    position: absolute;
+    right: 27vw;
+    bottom: 5vh;
+}
+
+/* SECTION: INTERESTED PG. */
+
+#interested {
+    background-color: black;
+}
+
+#interested-header {
+    margin-top: 5vh;
+    color: #B7B7B7;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 80px;
+    text-align: center;
+}
+
+#sase-interest-img {
+    position: absolute;
+    left: 22vw;
+    top: 20vh;
+    border: solid 5px #E0AD1D;
+}
+
+#confused {
+    position: absolute;
+    right: 5vw;
+    top: 15vh;
+}
+
+#smiley {
+    position: absolute;
+    left: 5vw;
+    bottom: 15vh;
+}
+
+/* SECTION: INTERESTED PG. 2 */
+
+#interested-contd {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+}
+
+#interested-contd-inner {
+    display: flex;
+    width: 100%;
+}
+
+#first-half,
+#second-half {
+  flex: 1;                 /* split the row 50/50 */
+  box-sizing: border-box;
+  padding: 1.5rem;
+  line-height: 3rem;
+  letter-spacing: 0.05em;
+}
+
+#first-half-txt p,
+#second-half-txt p {
+    padding: 1.5rem;
+}
+
+#first-half-txt,
+#second-half-txt {
+    margin-top: 1.5em;
+    font-size: 2em;
+    color: #B7B7B7;
+}
+
+#first-half {
+    display: flex;
+    flex-direction: column;
+}
+
+.emphasis {
+    font-weight: bold;
+    color: white;
+}
+
+#insta-feed {
+    margin-top: 5vh;
+    margin-left: 2vw;
+}
+
+#insta-feed img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#blt-pt1 {
+    position: absolute;
+    left: 2vw;
+}
+
+#blt-pt2 {
+    position: absolute;
+    right: 2vw;
+    bottom: 2vh;
+}
+
+/* NEW PAGE: STUDENT BODY OF DIRECTORS */
+
+#sbod {
+    background-color: #E0AD1D;
+}
+
+#sbod-title {
+    position: absolute;
+    left: 8vw;
+}
+
+#sbod-icon {
+    position: absolute;
+    left: 40vw;
+    top: 3vh;
+}
+
+#sbod-text {
+    display: flex;
+
+    position: absolute;
+    top: 60vh;
+    left: 25vw;
+    font-size: 22px;
+    
+    color: #5D480F;
+}
