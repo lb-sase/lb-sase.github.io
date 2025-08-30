@@ -284,6 +284,7 @@ section {
 #carousel {
     width: 100%;
     overflow-x: auto;
+    overflow-y: none;
     margin: 2em auto;
     display: flex;
     gap: 1em;
