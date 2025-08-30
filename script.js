@@ -9,7 +9,7 @@ window.onload = function() {
     const currentPath = window.location.pathname;
     let actual_path = currentPath.substring(currentPath.lastIndexOf('/'), currentPath.length);
 
-    if (actual_path == "/index.html") {
+    if (actual_path == "/index.html" || actual_path == "/") {
         document.getElementById('landing-page-inner').classList.add('revealed');
 
         document.onscroll = function() {
