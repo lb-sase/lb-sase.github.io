@@ -287,7 +287,6 @@ section {
     margin: 2em auto;
     display: flex;
     gap: 1em;
-    scroll-behavior: smooth;
     justify-content: center;
 }
 
