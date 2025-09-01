@@ -64,11 +64,7 @@ section {
 
 .navbar-btns:hover {
     color: white;
-    cursor: pointer;
-}
-
-.navbar-btns:active {
-    transform: scale(0.95);
+    cursor: not-allowed;
 }
 
 #bi-list:hover {
@@ -278,7 +274,7 @@ section {
 
 #check-out-alumni {
     background-color: black;
-    height: 450px;
+    height: 600px;
 }
 
 #carousel {
@@ -301,7 +297,50 @@ section {
     border: solid 2px #B7B7B7;
     text-align: center;
     align-content: center;
+    position: relative;
 }
+
+#card-wrap-first,
+#card-wrap-second,
+#card-wrap-third {
+    width: 336px;
+    height: 288px;
+}
+
+#gabriel-desc,
+#kristianna-desc,
+#terence-desc {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 336px;
+  height: 288px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+#card-wrap-first:hover #gabriel-desc,
+#card-wrap-second:hover #kristianna-desc,
+#card-wrap-third:hover #terence-desc {
+    visibility: visible;
+    opacity: 1;
+}
+
+.linkedins:hover {
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
 
 /* NEW PAGE: STUDENT BODY OF DIRECTORS */
 
