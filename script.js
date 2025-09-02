@@ -6,10 +6,10 @@ window.onload = function() {
     console.log("the entire page has loaded!");
 
     // added functionality to detect which page the user is on so that can be a global js file 
-    const currentPath = window.location.pathname;
-    let actual_path = currentPath.substring(currentPath.lastIndexOf('/'), currentPath.length);
+    const currentPage = document.body.dataset.page;
+    console.log(currentPage);
 
-    if (actual_path == "/index.html" || "/") {
+    if (currentPage == "home") {
         document.getElementById('landing-page-inner').classList.add('revealed');
 
         document.onscroll = function() {
@@ -21,6 +21,21 @@ window.onload = function() {
                 element.classList.remove("fade-out");
             }
         }
+
+        // observing #sase-info
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // header is in the viewport, animate svg
+                    const path = document.getElementById("ul-stroke-path");
+                    path.style.animation = "draw 2.5s ease-in-out forwards";
+                    console.log('AHHHHHHHHH');
+                }
+                });
+        });
+
+        const targetElement = document.getElementById('sase-info-header');
+        observer.observe(targetElement);
     }
 
     // navbar reveal/disappear on menu button press 
@@ -39,18 +54,4 @@ window.onload = function() {
         }
     })
 
-    // observing #sase-info
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // header is in the viewport, animate svg
-                const path = document.getElementById("ul-stroke-path");
-                path.style.animation = "draw 2.5s ease-in-out forwards";
-                console.log('AHHHHHHHHH');
-            }
-        });
-    });
-
-    const targetElement = document.getElementById('sase-info-header');
-    observer.observe(targetElement);
 };

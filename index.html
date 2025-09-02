@@ -5,11 +5,11 @@
         <link rel="icon" type="image/x-icon" href="public/csulb-sase-logo.png" />
         <link rel="stylesheet" href="index.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CSULB SASE</title>
+        <title>CSULB SASE | home</title>
         <script src="script.js"></script>
     </head>
 
-    <body>
+    <body data-page="home">
             <section id="landing-page">
                 <!-- FINISHED -->
                     <video autoplay muted loop id="landing-vid">
@@ -43,7 +43,17 @@
                         <div id="landing-desc">
                                 <div style="color: white; font-weight: bold; margin: 0;"> Welcome to our website! 💛🖤</div>
                                 <br>
-                                <div style="font-style: italic; margin: 0;"> Here, you'll be able to find everything about Long Beach's SASE Chapter - take a look around! </div>
+                                <div style="display: flex; justify-content: center; align-items: center; column-gap: 200px;"> 
+                                    <div style="display: flex; width: 400px; justify-content: center; flex-direction: column; align-items: center;">
+                                        <p> Wondering who's helping you this school year? </p>
+                                        <a href="routes/sbod.html" class="landing-btns mtb"> MEET THE BOARD </a>
+                                    </div>
+
+                                    <div style="display: flex; flex-direction: column; align-items: center; width: 400px;">
+                                        <p> Curious about what we do? </p>
+                                        <a href="#sase-info" class="landing-btns las"> LEARN ABOUT SASE </a>
+                                    </div>
+                                </div>
                         </div>
                     </div>
 
@@ -146,7 +156,7 @@
         <!-- FIXME: FOOTER -->
         <footer>
             <div id="link-footer">
-                <p id="footer-txt"> This is a FOOTER! With a credit to ME! I am Jules. I developed this website. I shit myself. Thank you. </p>
+                <p id="footer-txt"> &copy; 2025 Jules-Elvin Andrade, affiliated with CSULB SASE </p>
                 
                 <div style="display: flex; column-gap: 10px; margin-top: 20px;">
                     <span class="dot discord" title="discord" onclick="window.open('https://discord.com/invite/jRENw4T692')">

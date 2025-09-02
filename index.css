@@ -31,7 +31,41 @@
     #three-pillars-cntr {
         flex-direction: column;
     }
+
+    /* SECTION: ALUMNI */
+
+    #check-out-alumni {
+        height: 1200px;
+    }
+
+    #carousel {
+        align-items: center;
+        flex-direction: column;
+    }
+
 }
+
+@media (max-width: 1024px) {
+  #exec-cntr {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  #leadership-cntr {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+    #exec-cntr,
+    #leadership-cntr {
+        grid-template-columns: 1fr;   /* single column for phones */
+        gap: 24px;
+    }
+    .wrapper {
+        max-width: 90vw;              /* scale cards to viewport */
+    }
+}
+
+
 
 html,
 body {
@@ -40,11 +74,11 @@ body {
     color: white;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 section {
   position: relative;          
-  overflow: hidden; 
 }
 
 #bi-list {
@@ -88,6 +122,7 @@ section {
     background-color: rgba(0,0,0,0.75);
     border: transparent;
     justify-content: center;
+    align-items: center;
     padding: 15px 75px;
 }
 
@@ -216,12 +251,53 @@ section {
     opacity: 0;
 }
 
+.landing-btns {
+    display: inline-block;
+    width: 250px;
+    color: white;
+    padding: 25px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.landing-btns:active {
+    transform: translateY(4px);
+}
+
+.mtb {
+    background-color: #E0AD1D;
+    box-shadow: 0 9px #5D480F;
+}
+
+.mtb:hover {
+    background-color: #987513;
+}
+
+.mtb:active {
+    box-shadow: 0 5px #5D480F;
+}
+
+.las {
+    background-color: #5D480F;
+    box-shadow: 0 9px #E0AD1D;
+}
+
+.las:hover {
+    background-color: #281f06;
+}
+
+.las:active {
+    box-shadow: 0 5px #E0AD1D;
+}
+
+
 /* SECTION: SASE INFO */
 
 #sase-info {
     background-color: #E0AD1D;
     height: 800px;  
     color: #5D480F;
+    overflow: hidden;
 }
 
 #sase-info-header {
@@ -345,39 +421,183 @@ section {
 /* NEW PAGE: STUDENT BODY OF DIRECTORS */
 
 #sbod {
-    background-color: #E0AD1D;
+  background-color: #E0AD1D;
+  padding: 40px 16px;   /* breathing room */
+  min-height: 100vh;    /* optional */
 }
 
+
+/* Center this whole badge in the viewport (optional) */
 #sbod-title {
-    position: absolute;
-    left: 8vw;
+  /* If you want it truly in the middle of the screen: */
+  min-height: 60vh;                 /* optional */
+  display: grid;                    /* grid lets us stack items perfectly */
+  place-items: center;              /* center both axes */
+  position: relative;               /* anchor for stacked children */
 }
 
-#sbod-icon {
-    position: absolute;
-    left: 40vw;
-    top: 3vh;
+/* Stack the image and the ring in the same grid cell */
+#sbod-title img,
+#rotatingText {
+  grid-area: 1 / 1;                 /* same cell */
 }
 
-#sbod-text {
-    display: flex;
+/* Keep the image fixed (no animation) */
+#sbod-title img {
+  width: 350px;
+  height: 350px;
+  object-fit: contain;
+}
 
-    position: absolute;
-    top: 60vh;
-    left: 25vw;
-    font-size: 22px;
-    
+section.sbod-hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+/* Spin the text ring around the image center */
+#rotatingText {
+  margin-top: 25px;
+  margin-right: 8px;
+  width: 500px;                     /* slightly larger than the image */
+  height: 500px;
+  transform-origin: 50% 50%;        /* rotate around its own center */
+  animation: rotate-circle 10s linear infinite;
+  pointer-events: none;             /* clicks pass through */
+  user-select: none;
+}
+
+@keyframes rotate-circle {
+  to { transform: rotate(360deg); }
+}
+
+#sbod-bq {
     color: #5D480F;
+    font-size: 2rem;
+    font-style: italic;
+    margin: 0.25em 0;
+    padding: 0.35em 25px;
+    width: 700px;
+    position: relative;
+}
+
+#sbod-bq:before {
+    display: block;
+    padding-left: 10px;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #362908;
+}
+
+#sbod-bq cite {
+    color: #362908;
+    font-size: 18px;
+    display: block;
+    margin-top: 5px;
+}
+
+#sbod-bq cite:before {
+    content: "\2014 \2009";
+}
+
+#exec-cntr,
+#leadership-cntr {
+  display: grid;
+  justify-items: center;     /* center each card */
+  align-items: start;
+}
+
+.board-polaroid {
+  width: 100%;
+  background-color: #dfdfdf;
+  display: grid;           /* easy centering of inner image */
+  place-items: center;
+  border: 0;               /* your shadow lives on .exec if you want */
+  transition: transform .2s ease-in-out;
+}
+
+.board-name {
+  min-height: 2.5rem;         /* always reserve space so rows don’t shift */
+  margin-top: 30px;
+  margin-bottom: 0;
+  text-align: center;
+  color: #362908;
+  font-family: 'ZT Formom';
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#exec-cntr .board-polaroid {
+  aspect-ratio: 275 / 375;   /* consistent shape */
+  box-shadow: -17px 11px 15px 3px rgba(154,114,21,0.75);
+}
+
+#leadership-cntr .board-polaroid {
+  aspect-ratio: 235 / 335;
+  box-shadow: -17px 11px 15px 3px rgba(154,114,21,0.25);          /* or your preferred shadow */
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 275px;        /* exec max; leadership will be narrower via container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper:hover .board-name {
+  opacity: 1;
+}
+
+.wrapper:hover .board-polaroid {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+#exec-cntr {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 275px));
+  justify-content: center;   /* centers the grid (and the last row) */
+  justify-items: center;     /* optional: center content inside each cell */
+}
+
+#leadership-cntr {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 235px));
+  justify-content: center;
+  justify-items: center;
+}
+
+.exec-inner,
+.leadership-inner {
+  width: 82%;                /* white border like a polaroid */
+  height: 72%;
+  object-fit: cover;
+  margin-top: -15%;
 }
 
 /* SECTION: FOOTER */
 
-footer {
+footer,
+#maj-yellow {
     height: 200px;
     background: #000000;
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(51, 50, 50, 1) 100%);
     color: #B7B7B7;
 }
+
+#maj-yellow {
+    background: #E0AD1D;
+    color: #271e06;
+    background: linear-gradient(180deg, rgba(224, 173, 29, 1) 0%, rgba(93, 72, 15, 1) 100%);
+}
+
 
 #link-footer {
     display: flex;
@@ -415,12 +635,4 @@ footer {
 .dot:hover {
     background-color: #b7b7b77d;
     cursor: pointer;
-}
-
-#footer-txt {
-    opacity: 0;
-}
-
-#footer-txt:hover {
-    opacity: 1;
 }
