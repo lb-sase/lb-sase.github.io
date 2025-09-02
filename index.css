@@ -26,11 +26,7 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-
-    #three-pillars-cntr {
-        flex-direction: column;
-    }
+@media only screen and (max-width: 820px) {
 
     /* SECTION: SASE INFO */
 
@@ -39,7 +35,11 @@
     }
     
     #sase-info {
-        height: 400vh;
+        height: 500vh;
+    }
+
+    #pillar-cntr {
+        flex-direction: column;
     }
 
     /* SECTION: ALUMNI */
@@ -271,7 +271,7 @@ section {
 
 .mtb {
     background-color: #E0AD1D;
-    box-shadow: 0 9px #5D480F;
+    box-shadow: 0 9px #000000;
 }
 
 .mtb:hover {
@@ -279,16 +279,16 @@ section {
 }
 
 .mtb:active {
-    box-shadow: 0 5px #5D480F;
+    box-shadow: 0 5px #000000;
 }
 
 .las {
-    background-color: #5D480F;
+    background-color: #000000;
     box-shadow: 0 9px #E0AD1D;
 }
 
 .las:hover {
-    background-color: #281f06;
+    background-color: #565656;
 }
 
 .las:active {
@@ -300,7 +300,7 @@ section {
 
 #sase-info {
     background-color: #E0AD1D;
-    min-height: 200vh;
+    min-height: 225vh;
     color: #5D480F;
     overflow: hidden;
 }
@@ -385,6 +385,73 @@ section {
     margin-top: 20px;
     width: 500px;
     text-align: center;
+}
+
+.trapezoid {
+    width: 300px;
+    border-bottom: 100px solid #634a0d;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+}
+
+.spacer {
+    width: 300px;
+    border-bottom: 50px solid #928972;
+    border-radius: 15px;
+}
+
+.flipped {
+	transform: scale(1, -1);
+}
+
+#pillar-cntr {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;            
+}
+
+.pillar-imgs {
+    height: 300px;
+    width: 275px;
+    object-fit: cover;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-grid {
+    display: grid;
+    justify-content: center;
+}
+
+/* column wrapper for each pillar */
+.pillar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* small header */
+.pillar-title {
+  margin: 0 0 8px;
+  font-family: 'ZT Formom';
+  font-style: italic;
+  font-size: 4em;
+  text-align: center;
+}
+
+/* small footer/description */
+.pillar-desc {
+  max-width: 325px;          /* matches trapezoid/spacer width */
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 1.25em;
+  line-height: 1.35;
 }
 
 
