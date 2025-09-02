@@ -32,11 +32,17 @@
         flex-direction: column;
     }
 
-    /* SECTION: ALUMNI */
+    /* SECTION: SASE INFO */
 
-    #check-out-alumni {
-        height: 1200px;
+    #welcome-cntr {
+        flex-direction: column;
     }
+    
+    #sase-info {
+        height: 400vh;
+    }
+
+    /* SECTION: ALUMNI */
 
     #carousel {
         align-items: center;
@@ -55,6 +61,7 @@
 }
 
 @media (max-width: 640px) {
+
     #exec-cntr,
     #leadership-cntr {
         grid-template-columns: 1fr;   /* single column for phones */
@@ -64,7 +71,6 @@
         max-width: 90vw;              /* scale cards to viewport */
     }
 }
-
 
 
 html,
@@ -192,7 +198,6 @@ section {
 #landing-desc {
     color: #B7B7B7;
     text-align: center;
-    width: 50vw;
     padding: 10px;
     font-size: 22px;
 }
@@ -295,7 +300,7 @@ section {
 
 #sase-info {
     background-color: #E0AD1D;
-    height: 800px;  
+    min-height: 200vh;
     color: #5D480F;
     overflow: hidden;
 }
@@ -329,14 +334,51 @@ section {
 #welcome-cntr {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 20px;
-    column-gap: 50px;
+    column-gap: 150px;
 }
 
-#welcome-polaroid {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.905);
-    padding: 1rem 1rem 4rem;
+.polaroid-group {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;        /* keeps it sized to contents */
+  transform: scale(var(--scale, 1));
+}
+
+.polaroid {
+  border: 15px solid #fff;
+  background: #fff;
+  object-fit: cover;
+}
+
+.polaroid.main {
+  width: 28rem;
+  height: 22rem;
+  border-bottom-width: 30px;
+  box-shadow: -8px 10px 10px 2px #a67f14;
+}
+
+.polaroid.small {
+  position: absolute;
+  width: 10rem;
+  height: 13rem;
+  border-bottom-width: 45px;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+}
+
+.small--bl {
+  bottom: -4rem;    
+  left: -6rem;
+  transform: rotate(-8deg);
+  object-position: 75% 50%;  
+}
+
+.small--tr {
+  top: -4rem;
+  right: -6rem;
+  transform: rotate(6deg);
 }
 
 #welcome-txt {
@@ -349,8 +391,8 @@ section {
 /* SECTION: INTERESTED PG. 1 */
 
 #check-out-alumni {
-    background-color: black;
-    height: 600px;
+  min-height: 75svh;            /* safe viewport height on mobile */
+  padding-block: 2rem;           /* breathing room so it never hugs the footer */
 }
 
 #carousel {
