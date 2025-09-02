@@ -18,40 +18,12 @@
         url('public/fonts/ZT Formom Italic.ttf') format("truetype");
 }
 
-@keyframes slide-in {
-    from {
-        transform: translateY(-100%);
-    } to {
-        transform: translateY(0%);
-    }
+:root {
+  --vh: 1vh;
+  --svh: 1svh;
 }
 
-@media only screen and (max-width: 820px) {
-
-    /* SECTION: SASE INFO */
-
-    #welcome-cntr {
-        flex-direction: column;
-    }
-    
-    #sase-info {
-        height: 500vh;
-    }
-
-    #pillar-cntr {
-        flex-direction: column;
-    }
-
-    /* SECTION: ALUMNI */
-
-    #carousel {
-        align-items: center;
-        flex-direction: column;
-    }
-
-}
-
-@media (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   #exec-cntr {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
@@ -60,16 +32,34 @@
   }
 }
 
-@media (max-width: 640px) {
+@media only screen and (max-width: 820px) {
+  #welcome-cntr { flex-direction: column; }
 
-    #exec-cntr,
-    #leadership-cntr {
-        grid-template-columns: 1fr;   /* single column for phones */
-        gap: 24px;
-    }
-    .wrapper {
-        max-width: 90vw;              /* scale cards to viewport */
-    }
+  #sase-info {
+    min-height: calc(525 * var(--svh));
+  }
+
+  #pillar-cntr { flex-direction: column; }
+
+  #carousel {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #exec-cntr,
+  #leadership-cntr {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .wrapper { max-width: 90vw; }
+}
+
+@media only screen and (max-width: 400px) {
+  #sase-info {
+    min-height: calc(525 * var(--svh));
+  }
 }
 
 
