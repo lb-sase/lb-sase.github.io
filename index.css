@@ -549,6 +549,7 @@ section {
   background-color: #E0AD1D;
   padding: 40px 16px;   /* breathing room */
   min-height: 100vh;    /* optional */
+  overflow: hidden;
 }
 
 
@@ -626,6 +627,24 @@ section.sbod-hero {
 
 #sbod-bq cite:before {
     content: "\2014 \2009";
+}
+
+#exec-title {
+  font-family: 'ZT Formom'; 
+  font-size: 6rem; 
+  color: #5D480F; 
+  text-align: center; 
+  margin-top: 20px; 
+  margin-bottom: 0;
+}
+
+#leadership-title {
+  font-family: 'ZT Formom'; 
+  font-size: 6rem; 
+  color: #5D480F; 
+  text-align: center; 
+  margin-top: 0; 
+  margin-bottom: 20px;
 }
 
 #exec-cntr,
@@ -864,5 +883,21 @@ footer,
   #coa-subtitle {
     margin-top: 10px;
     font-size: 1em;
+  }
+
+  #sbod-title img {
+    width: 250px;
+    height: 250px;
+  }
+
+  #rotatingText {
+    margin-right: 5px;
+    width: 350px;
+    height: 350px;
+  }
+
+  #exec-title,
+  #leadership-title {
+    font-size: 3.5rem;
   }
 }
