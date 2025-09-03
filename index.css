@@ -813,14 +813,14 @@ footer,
   .wrapper { max-width: 90vw; }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
 
   #landing-page {
     height: 150vh;
   }
 
   #sase-info {
-    height: 650vh;
+    min-height: 450vh;
   }
 
   #sase-navbar-inner {
