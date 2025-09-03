@@ -23,45 +23,6 @@
   --svh: 1svh;
 }
 
-@media only screen and (max-width: 1024px) {
-  #exec-cntr {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
-  #leadership-cntr {
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  #welcome-cntr { flex-direction: column; }
-
-  #sase-info {
-    min-height: calc(525 * var(--svh));
-  }
-
-  #pillar-cntr { flex-direction: column; }
-
-  #carousel {
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-@media only screen and (max-width: 640px) {
-  #exec-cntr,
-  #leadership-cntr {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .wrapper { max-width: 90vw; }
-}
-
-@media only screen and (max-width: 400px) {
-  #sase-info {
-    min-height: calc(525 * var(--svh));
-  }
-}
-
 
 html,
 body {
@@ -109,6 +70,11 @@ section {
     flex-direction: column;
 }
 
+#front-page-logo {
+    height: 500px;
+    width: 500px;
+}
+
 #sase-navbar-cntr {
     position: fixed;
     margin-left: .25em;
@@ -126,7 +92,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 15px;
+    gap: 15px;
 }
 
 #home-btn:hover {
@@ -139,7 +105,7 @@ section {
 }
 
 #landing-page {
-    height: 800px;  
+    height: 110vh;  
 }
 
 #landing-vid {
@@ -212,7 +178,7 @@ section {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100; /* Ensure it's on top */
+  z-index: 100; 
 }
 
 #scroll-down-arrow {
@@ -283,6 +249,27 @@ section {
 
 .las:active {
     box-shadow: 0 5px #E0AD1D;
+}
+
+#mtb-text,
+#las-text {
+    margin-top: 0;
+}
+
+#intro-btns{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    column-gap: 100px;
+}
+
+#mtb-container,
+#las-container {
+    display: flex; 
+    width: 300px; 
+    justify-content: center; 
+    flex-direction: column; 
+    align-items: center;   
 }
 
 
@@ -377,15 +364,25 @@ section {
     text-align: center;
 }
 
+#three-pillars-title {
+  font-size: 5em; 
+  font-family: 'Soytus'; 
+  letter-spacing: 3px; 
+  margin-top: 50px; 
+  margin-bottom: 10px; 
+  width: 90%; 
+  text-align: center;
+}
+
 .trapezoid {
-    width: 300px;
+    width: 275px;
     border-bottom: 100px solid #634a0d;
 	border-left: 50px solid transparent;
 	border-right: 50px solid transparent;
 }
 
 .spacer {
-    width: 300px;
+    width: 275px;
     border-bottom: 50px solid #928972;
     border-radius: 15px;
 }
@@ -426,6 +423,12 @@ section {
   align-items: center;
 }
 
+@keyframes color-change {
+  0% { color: #030200; }
+  50% { color:#342706; }
+  100% { color: #775b0f; }
+}
+
 /* small header */
 .pillar-title {
   margin: 0 0 8px;
@@ -433,6 +436,7 @@ section {
   font-style: italic;
   font-size: 4em;
   text-align: center;
+  animation: color-change 1s infinite alternate;
 }
 
 /* small footer/description */
@@ -445,11 +449,33 @@ section {
 }
 
 
+#welcome-sub-txt {
+  font-size: 20px; 
+  word-spacing: 4px;
+}
+
+
 /* SECTION: INTERESTED PG. 1 */
 
 #check-out-alumni {
   min-height: 75svh;            /* safe viewport height on mobile */
   padding-block: 2rem;           /* breathing room so it never hugs the footer */
+}
+
+#coa-title {
+  font-size: 50px; 
+  font-family: 'ZT Formom'; 
+  text-align: center; 
+  margin-bottom: 0;
+}
+
+#coa-subtitle {
+  font-size: 1.25em; 
+  font-family: Helvetica; 
+  font-style: italic; 
+  color: #B7B7B7; 
+  text-align: center;
+  margin-top: 5px;
 }
 
 #carousel {
@@ -713,25 +739,130 @@ footer,
   place-items: center;
 }
 
-/*
-.discord {
-    background-color: #5865F2;
-}
-
-.youtube {
-    background-color: #E52D27;
-}
-
-.instagram {
-    background-color: #DD2A7B;
-}
-
-.linktree {
-    background-color: #41E760;
-}
-*/
-
 .dot:hover {
     background-color: #b7b7b77d;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1024px) {
+  #exec-cntr {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  #leadership-cntr {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  #welcome-cntr { flex-direction: column; }
+
+  #sase-info {
+    min-height: calc(525 * var(--svh));
+  }
+
+  #front-page-logo {
+    height: 350px;
+    width: 350px;
+  }
+
+  #pillar-cntr { 
+    flex-direction: column;
+    }
+
+  #carousel {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+
+  #exec-cntr,
+  #leadership-cntr {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .wrapper { max-width: 90vw; }
+}
+
+@media only screen and (max-width: 400px) {
+
+  #landing-page {
+    height: 150vh;
+  }
+
+  #sase-info {
+    height: 650vh;
+  }
+
+  #sase-navbar-inner {
+    flex-direction: column;
+  }
+
+  #sase-info-header {
+    font-size: 50px;
+  }
+
+  #ul-stroke {
+    opacity: 0;
+  }
+
+  #intro-btns {
+    flex-direction: column;
+  }
+
+  #las-container {
+    margin-top: 25px;
+  }
+
+  #mtb-text {
+    margin-top: 75px;
+  }
+
+  .polaroid-group {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .polaroid.main {
+    width: 15rem;
+    height: 12rem;
+  }
+
+  .polaroid.small {
+    width: 6rem;
+    height: 7.5rem;
+  }
+
+  .small--bl {
+    bottom: -5rem;
+    left: -2rem;
+  }
+  
+  .small--tr {
+    top: -5rem;
+    right: -2rem;
+  }
+
+  #welcome-txt {
+    width: 300px;
+  }
+
+  #welcome-sub-txt {
+    font-size: 22px;
+  }
+
+  #three-pillars-title {
+    font-size: 4em;
+    margin-top: 25px;
+  }
+
+  #coa-title {
+    font-size: 45px;
+  }
+
+  #coa-subtitle {
+    margin-top: 10px;
+    font-size: 1em;
+  }
 }
