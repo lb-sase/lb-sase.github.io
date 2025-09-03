@@ -785,9 +785,9 @@ footer,
   #welcome-cntr { flex-direction: column; }
   
   #sase-info {
-    min-height: 450vh;
+    min-height: 460vh;
   }
-  
+
   #front-page-logo {
     height: 350px;
     width: 350px;
@@ -813,7 +813,7 @@ footer,
   .wrapper { max-width: 90vw; }
 
   #sase-info {
-    min-height: 450vh;
+    min-height: 460vh;
   }
 }
 
@@ -824,7 +824,7 @@ footer,
   }
 
   #sase-info {
-    min-height: 450vh;
+    min-height: 460vh;
   }
 
   #sase-navbar-inner {
