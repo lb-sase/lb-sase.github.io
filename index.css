@@ -763,6 +763,15 @@ footer,
     cursor: pointer;
 }
 
+.discord,
+.youtube,
+.instagram,
+.linktree,
+.github {
+  width: 48px;
+  height: 48px;
+}
+
 @media only screen and (max-width: 1024px) {
   #exec-cntr {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -899,5 +908,19 @@ footer,
   #exec-title,
   #leadership-title {
     font-size: 3.5rem;
+  }
+
+  .discord,
+  .youtube,
+  .instagram,
+  .linktree,
+  .github {
+    width: 36px;
+    height: 36px;
+  }
+
+  .dot {
+    height: 55px;
+    width: 55px;
   }
 }
