@@ -325,7 +325,7 @@ section {
 }
 
 .polaroid {
-  border: 15px solid #fff;
+  border: 10px solid #fff;
   background: #fff;
   object-fit: cover;
 }
@@ -506,6 +506,12 @@ section {
 #card-wrap-third {
     width: 336px;
     height: 288px;
+}
+
+.card-base {
+  object-fit: cover;
+  width: 336px;
+  height: 288px;
 }
 
 #gabriel-desc,
@@ -868,12 +874,12 @@ footer,
 
   .small--bl {
     bottom: -5rem;
-    left: -2rem;
+    left: -3rem;
   }
   
   .small--tr {
     top: -5rem;
-    right: -2rem;
+    right: -3rem;
   }
 
   #welcome-txt {
@@ -887,6 +893,18 @@ footer,
   #three-pillars-title {
     font-size: 4em;
     margin-top: 25px;
+  }
+
+  .card, 
+  #card-wrap-first,
+  #card-wrap-second,
+  #card-wrap-third,
+  .card-base,
+  #gabriel-desc,
+  #kristianna-desc,
+  #terence-desc {
+    width: 300px;
+    height: 250px;
   }
 
   #coa-title {
