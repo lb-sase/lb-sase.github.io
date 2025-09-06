@@ -699,6 +699,14 @@ section.sbod-hero {
   align-items: center;
 }
 
+.exec-inner.eriel .exec-inner{
+  background-image: url('public/sbod-photos/eriel-starter.jpg');
+}
+
+.exec-inner.eriel:hover {
+  background-image: url('public/sbod-photos/superman.jpg');
+}
+
 .wrapper:hover .board-name {
   opacity: 1;
 }
