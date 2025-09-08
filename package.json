@@ -1,0 +1,26 @@
+{
+  "name": "lb-sase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start" : "parcel ./*.html",
+    "build": "parcel build ./*.html --public-url ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lb-sase/lb-sase.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lb-sase/lb-sase.github.io/issues"
+  },
+  "homepage": "https://github.com/lb-sase/lb-sase.github.io#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
