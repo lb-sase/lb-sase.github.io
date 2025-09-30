@@ -12,8 +12,15 @@
     <body data-page="home">
             <section id="landing-page">
                 <!-- FINISHED -->
-                    <video autoplay muted loop id="landing-vid">
-                        <source src="public/saselandingvid.mp4" type="video/mp4" />
+                    <video
+                    id="landing-vid"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    poster="public/saselandingvid-poster.png">
+                    <source src="public/saselandingvid.mp4" type="video/mp4" />
                     </video>
 
                 <div id="landing-page-inner" class="hidden-element">

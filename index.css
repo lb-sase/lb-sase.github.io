@@ -699,13 +699,18 @@ section.sbod-hero {
   align-items: center;
 }
 
-.exec-inner.eriel .exec-inner{
+.exec .exec-inner {
   background-image: url('public/sbod-photos/eriel-starter.jpg');
+  background-size: cover;       /* scale image to cover container */
+  background-position: center;  /* center the image */
+  background-repeat: no-repeat; /* don’t tile the image */
+  animation: opacity ease-in-out 1.5s, visibility ease-in-out 1.5s;
 }
 
-.exec-inner.eriel:hover {
+.exec.board-polaroid.eriel:hover .exec-inner {
   background-image: url('public/sbod-photos/superman.jpg');
 }
+
 
 .wrapper:hover .board-name {
   opacity: 1;
