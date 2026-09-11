@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/ball.png">
+    <title>CSULB SASE | events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Unbounded', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--accent-light);
+            overflow: auto; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calendar-container {
+            width: 100vw;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-dark);
+            box-sizing: border-box;
+        }
+
+        .month-sticker {
+            position: fixed;
+            top: 250px;
+            left: 40px;
+            z-index: 110;
+            background-color: var(--accent-light);
+            color: var(--text-dark);
+            padding: 15px 40px 15px 30px;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transform: rotate(-3deg);
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--text-dark);
+            transition: opacity 0.3s ease;
+        }
+
+        .month-sticker::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+            width: 60px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            font-size: 14px;
+            font-weight: normal;
+            color: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            font-family: sans-serif;
+            transition: color 0.2s ease;
+            padding: 4px;
+        }
+        
+        .close-btn:hover {
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        .restore-btn {
+            position: fixed;
+            top: 25px; 
+            left: 40px;
+            z-index: 105; 
+            display: none; /* Hidden by default */
+            background-color: var(--accent-light);
+            color: var(--text-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(246, 246, 219, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .restore-btn:hover {
+            background-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background-color: #222;
+            color: var(--accent-light);
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            border-bottom: 2px solid rgba(246, 246, 219, 0.2);
+        }
+
+        .calendar-header div {
+            padding: 12px 0;
+            border-right: 1px solid rgba(246, 246, 219, 0.1);
+        }
+
+        .calendar-header div:last-child {
+            border-right: none;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-auto-rows: 1fr;
+            flex-grow: 1;
+            background-color: rgba(246, 246, 219, 0.2);
+            gap: 1px;
+        }
+
+        .day {
+            background-color: var(--bg-dark);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: background-color 0.2s;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .day:hover {
+            background-color: #3f3f3f;
+        }
+
+        .day.empty {
+            background-color: #2a2a2a;
+        }
+
+        .day-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-light);
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .event {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-light);
+            font-size: 12px;
+            font-family: 'Ibarra Real Nova', serif;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-left: 3px solid transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .event:hover {
+            transform: scale(1.02);
+        }
+
+        .event.urgent {
+            background-color: rgba(231, 76, 60, 0.2);
+            border-left-color: #e74c3c;
+        }
+        
+        .event.fun {
+            background-color: rgba(155, 89, 182, 0.2);
+            border-left-color: #9b59b6;
+        }
+
+        .event.normal {
+            background-color: rgba(52, 152, 219, 0.2);
+            border-left-color: #3498db;
+        }
+
+        /* Floating View Toggle */
+        .view-toggle-nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bg-dark);
+            border: 2px solid var(--accent-light);
+            border-radius: 30px;
+            display: flex;
+            gap: 5px;
+            padding: 5px 10px;
+            z-index: 120;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+        }
+
+        .view-toggle-nav button {
+            background: transparent;
+            color: var(--accent-light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .view-toggle-nav button.active, 
+        .view-toggle-nav button:hover {
+            background-color: var(--accent-light);
+            color: var(--bg-dark);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Integrated SASE Navbar -->
+    <header class="navbar" id="navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        
+        <div class="logo">
+            <a href="/" class="nav-btn logo-btn">
+                <img src="../assets/csulb-sase-home.png" width="150" height="150" alt="CSULB SASE Logo"/>
+            </a>
+        </div>
+    </header>
+
+    <button id="restoreBtn" class="restore-btn">Show Month</button>
+
+    <div id="monthSticker" class="month-sticker">
+        September 2026
+        <span id="closeBtn" class="close-btn">✕</span>
+    </div>
+
+    <div class="view-toggle-nav">
+        <button id="btnMonthView" class="active">Month</button>
+        <button id="btnWeekView">Week</button>
+    </div>
+
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <div>SUN</div>
+            <div>MON</div>
+            <div>TUE</div>
+            <div>WED</div>
+            <div>THU</div>
+            <div>FRI</div>
+            <div>SAT</div>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid">
+            <!-- javascript in here -->
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+        const sticker = document.getElementById('monthSticker');
+        const closeBtn = document.getElementById('closeBtn');
+        const restoreBtn = document.getElementById('restoreBtn');
+
+        closeBtn.addEventListener('click', () => {
+            sticker.style.display = 'none';
+            restoreBtn.style.display = 'block';
+        });
+
+        restoreBtn.addEventListener('click', () => {
+            sticker.style.display = 'block';
+            restoreBtn.style.display = 'none';
+        });
+
+        // mock data
+        const eventsData = {
+            10: [
+                { title: "GBM #1 (ET-229)", type: "urgent" },
+                { title: "AFTER FUNDY: Cha for Tea", type: "normal" }
+            ],
+            12: [
+                { title: "B2S Bonfire", type: "normal"}
+            ],
+            15: [
+                { title: "Study Night (recurring)", type: "normal" },
+            ],
+            16: [
+                { title: "MxM Social #2 - Game Night", type: "fun" }
+            ], 
+            17: [
+                { title: "Alumni Resume Review Night", type: "urgent" }
+            ],
+            22: [
+                { title: "Study Night (recurring)", type: "normal" }
+            ],
+            24: [
+                { title: "GBM #2 (ET-229)", type: "urgent" },
+                { title: "LinkedIn Workshop", type: "normal" },
+                { title: "Simone's Fundy/MxM Social #3", type: "fun"}
+            ],
+            29: [
+                { title: "Study Night (recurring)", type: "normal" },
+                { title: "MxM Social #4", type: "fun"}
+            ]
+        };
+
+        const calendarGrid = document.getElementById('calendarGrid');
+        
+        const daysInMonth = 30; 
+        const startingDayOfWeek = 2; 
+
+        function renderCalendar(view) {
+            calendarGrid.innerHTML = ''; // Clear existing days
+
+            // Determine today's date to find the current week
+            const today = new Date();
+            const currentDayNum = today.getDate(); 
+            
+            let startIdx = 0;
+            let endIdx = startingDayOfWeek + daysInMonth; 
+
+            // If week view, calculate the grid boundaries for the current week row
+            if (view === 'week') {
+                const currentIndex = startingDayOfWeek + currentDayNum - 1;
+                startIdx = currentIndex - (currentIndex % 7); // Floor to nearest Sunday
+                endIdx = startIdx + 7; // Exactly 7 days later
+            }
+
+            // Generate days based on calculated bounds
+            for (let i = startIdx; i < endIdx; i++) {
+                if (i < startingDayOfWeek || i >= startingDayOfWeek + daysInMonth) {
+                    // Empty padding day
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'day empty';
+                    calendarGrid.appendChild(emptyDay);
+                } else {
+                    // Actual populated day
+                    const dayNum = i - startingDayOfWeek + 1;
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'day';
+
+                    const numberSpan = document.createElement('div');
+                    numberSpan.className = 'day-number';
+                    numberSpan.textContent = dayNum;
+                    dayDiv.appendChild(numberSpan);
+
+                    if (eventsData[dayNum]) {
+                        eventsData[dayNum].forEach(event => {
+                            const eventDiv = document.createElement('div');
+                            eventDiv.className = `event ${event.type}`;
+                            eventDiv.textContent = event.title;
+                            dayDiv.appendChild(eventDiv);
+                        });
+                    }
+                    calendarGrid.appendChild(dayDiv);
+                }
+            }
+        }
+
+        // View toggle button listeners
+        const btnMonthView = document.getElementById('btnMonthView');
+        const btnWeekView = document.getElementById('btnWeekView');
+
+        btnMonthView.addEventListener('click', () => {
+            btnMonthView.classList.add('active');
+            btnWeekView.classList.remove('active');
+            renderCalendar('month');
+        });
+
+        btnWeekView.addEventListener('click', () => {
+            btnWeekView.classList.add('active');
+            btnMonthView.classList.remove('active');
+            renderCalendar('week');
+        });
+
+        // Initial render load
+        renderCalendar('month');
+    </script>
+</body>
+</html>
